@@ -7,9 +7,22 @@
 # Optional: export TG_BOT_TOKEN and TG_CHAT_ID for Telegram progress.
 # =========================================================
 
+# ------------------------- ARGS ---------------------------
+DEVICE=""
+LUNCH_TARGET=""
+case "${1:-}" in
+  --akari)       DEVICE=akari;    LUNCH_TARGET=aosp_h8266-userdebug ;;   # XZ2 (dual)
+  --akari-ss)    DEVICE=akari;    LUNCH_TARGET=aosp_h8216-userdebug ;;   # XZ2 (single)
+  --apollo)      DEVICE=apollo;   LUNCH_TARGET=aosp_h8324-userdebug ;;   # XZ2 Compact (dual)
+  --apollo-ss)   DEVICE=apollo;   LUNCH_TARGET=aosp_h8314-userdebug ;;   # XZ2 Compact (single)
+  --akatsuki)    DEVICE=akatsuki; LUNCH_TARGET=aosp_h9436-userdebug ;;   # XZ3 (dual)
+  --akatsuki-ss) DEVICE=akatsuki; LUNCH_TARGET=aosp_h8416-userdebug ;;   # XZ3 (single)
+  *)
+    echo "Usage: $0 --akari|--akari-ss|--apollo|--apollo-ss|--akatsuki|--akatsuki-ss"
+    exit 1 ;;
+esac
+
 # ------------------------- CONFIG -------------------------
-DEVICE=akari
-LUNCH_TARGET=aosp_h8266-userdebug        # XZ2 Dual; use aosp_h8216 for XZ2
 MANIFEST_URL=https://github.com/Tama-5-4-lineage/manifest
 MANIFEST_BRANCH=main
 BUILD_TARGET="AOSP"

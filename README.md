@@ -4,15 +4,17 @@ Crave build script for **AOSP Android 16 (r4)** on Sony Tama (SDM845: akari /
 XZ2) with **kernel 5.4** (built from source) + retrofit dynamic partitions.
 
 ## Usage on Crave
-Use the script as the build command:
+One-liner (like the reference):
 ```sh
-bash aosp.sh
+curl -fsSL https://raw.githubusercontent.com/Tama-5-4-lineage/crave_script/refs/heads/main/aosp.sh | bash -s -- --akari
 ```
 
-Config at the top of `aosp.sh`:
-- `DEVICE=akari`
-- `LUNCH_TARGET=aosp_h8266-userdebug` (XZ2 Dual; use `aosp_h8216` for XZ2)
-- `MANIFEST_URL=https://github.com/Tama-5-4-lineage/manifest` (branch `main`)
+Flags:
+- `--akari` / `--akari-ss`   — XZ2 (`aosp_h8266` / `aosp_h8216`)
+- `--apollo` / `--apollo-ss` — XZ2 Compact (`aosp_h8324` / `aosp_h8314`)
+- `--akatsuki` / `--akatsuki-ss` — XZ3 (`aosp_h9436` / `aosp_h8416`)
+
+Manifest: `https://github.com/Tama-5-4-lineage/manifest` (branch `main`).
 
 ## What it does
 1. Clean local dirs, `repo init` from the org manifest, `/opt/crave/resync.sh`, `repo sync`.
